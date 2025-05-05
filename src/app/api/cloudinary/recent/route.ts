@@ -20,7 +20,7 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const skipNumber = parseInt(url.searchParams.get("skip") as string) || 0;
   const limitNumber = parseInt(url.searchParams.get("limit") as string) || 10;
-  const folder = parseInt(url.searchParams.get("folder") as string) || "";
+  const folder = url.searchParams.get("folder") || "";
   try {
     const result = await cloudinary.search
       .expression(`folder: ${folder}`)
